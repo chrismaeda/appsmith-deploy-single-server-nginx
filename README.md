@@ -1,8 +1,8 @@
 HOWTO Deploy Appsmith on a Single Linux Server
 
-This document describes how to a single-server "retro" install of AppSmith, with no dependencies on docker or docker-compose.
+This document describes how to do a single-server "retro" install of AppSmith, with no dependencies on docker or docker-compose.
 
-AppSmith consists of an in-browser app, a Java-based application tier, and a MongoDB.  Here, the in-browser app is server by an Nginx, which also provides a reverse proxy to the application tier.  The MongoDB may be run on this server or another.
+AppSmith consists of an in-browser app, a Java-based application tier, and a MongoDB.  Here, the in-browser app is served by Nginx, which also provides a reverse proxy to the application tier.  MongoDB may be run on this server or another.
 
 
 # Requirements
@@ -113,6 +113,7 @@ Cd to nginx document home, usually /var/www/html, and unpack the client distribu
 ```
 cd /var/www/html
 sudo tar xf ~/client-dist.tar
+sudo chown -R root:root *
 ```
 
 # Configure Nginx
@@ -185,7 +186,6 @@ sudo systemctl reload nginx
 
 ```
 cd /opt/appsmith/server
-set -o allexport
 source .env
 (cd dist && exec java -jar server-*.jar)
 ```
