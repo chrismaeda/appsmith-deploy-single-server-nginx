@@ -32,11 +32,13 @@ If you decide to run MongoDB on the server...
 Check out the latest tag or get the release branch:
 
 ```
+git clone https://github.com/appsmithorg/appsmith.git
 git checkout tags/v1.6.1
 ```
 or
 
 ```
+git clone https://github.com/appsmithorg/appsmith.git
 git checkout release
 ```
 
@@ -101,6 +103,8 @@ tar xf ~/server-dist.tar
 From the appsmith source tree, copy app/server/envs/dev.env.example to /opt/appsmith/server/.env
 
 Edit this file as needed for your environment.
+
+Important: add 'set -o allexport' to the .env file so that all the variables get exported to AppSmith.
 
 ## Unpack Client Distribution
 
@@ -236,7 +240,6 @@ You may also want to edit the following settings:
 wrapper.java.command.loglevel=INFO
 wrapper.logfile=../logs/appsmith-server.log
 wrapper.logfile.maxsize=100m
-wrapper.console.title=Appsmith Server
 ```
 
 See the wrapper.conf included here.
