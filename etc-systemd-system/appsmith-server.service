@@ -1,0 +1,19 @@
+[Unit]
+Description=Appsmith Server Service
+Requires=redis.service
+After=redis.service
+Requires=mongod.service
+After=mongod.service
+Requires=cloud-sql-proxy.service
+After=cloud-sql-proxy.service
+
+[Service]
+Type=forking
+ExecStart=/opt/appsmith/server/bin/appsmith-server start sysd
+ExecStop=/opt/appsmith/server/bin/appsmith-server stop sysd
+User=ansibleautomation
+KillMode=control-group
+Environment=SYSTEMD_KILLMODE_WARNING=true
+
+[Install]
+WantedBy=multi-user.target
